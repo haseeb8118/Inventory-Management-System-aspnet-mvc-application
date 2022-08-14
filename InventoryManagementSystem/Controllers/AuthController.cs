@@ -25,6 +25,8 @@ namespace InventoryManagementSystem.Controllers
             {
                 if(item.Username == u.u_username && item.Password == u.u_password)
                 {
+                    String r = obj.st_getRoleWRTuser(u.u_username).Single();
+                    Session["role"] = r;
                     Session["name"] = u.u_username;
                     return RedirectToAction("Main");
                 }
@@ -51,6 +53,7 @@ namespace InventoryManagementSystem.Controllers
         public ActionResult Logout()
         {
             Session.Remove("name");
+            Session.Remove("role");
             return View("Index");
         }
     }

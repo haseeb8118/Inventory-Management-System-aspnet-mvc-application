@@ -50,6 +50,9 @@
           <Parameter Name="user" Type="varchar" Mode="In" />
           <Parameter Name="pass" Type="varchar" Mode="In" />
         </Function>
+        <Function Name="st_getRoleWRTuser" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="user" Type="varchar" Mode="In" />
+        </Function>
         <EntityContainer Name="inventoryDBModelStoreContainer">
           <EntitySet Name="categories" EntityType="Self.categories" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="roles" EntityType="Self.roles" Schema="dbo" store:Type="Tables" />
@@ -118,6 +121,9 @@
             <Parameter Name="user" Mode="In" Type="String" />
             <Parameter Name="pass" Mode="In" Type="String" />
           </FunctionImport>
+          <FunctionImport Name="st_getRoleWRTuser" ReturnType="Collection(String)">
+            <Parameter Name="user" Mode="In" Type="String" />
+          </FunctionImport>
         </EntityContainer>
         <ComplexType Name="st_getLoginDetails_Result">
           <Property Type="String" Name="Username" Nullable="false" MaxLength="50" />
@@ -169,6 +175,7 @@
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="st_getRoleWRTuser" FunctionName="inventoryDBModel.Store.st_getRoleWRTuser" />
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>

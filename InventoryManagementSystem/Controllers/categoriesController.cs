@@ -10,121 +10,107 @@ using InventoryManagementSystem.Models;
 
 namespace InventoryManagementSystem.Controllers
 {
-    public class usersController : Controller
+    public class categoriesController : Controller
     {
         private inventoryDBEntities2 db = new inventoryDBEntities2();
 
-        // GET: users
+        // GET: categories
         public ActionResult Index()
         {
-            var users = db.users.Include(u => u.role);
-            return View(users.ToList());
+            return View(db.categories.ToList());
         }
 
-        // GET: users/Details/5
+        // GET: categories/Details/5
         public ActionResult Details(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            user user = db.users.Find(id);
-            if (user == null)
+            category category = db.categories.Find(id);
+            if (category == null)
             {
                 return HttpNotFound();
             }
-            return View(user);
+            return View(category);
         }
 
-        private void CreateCombo()
-        {
-            List<SelectListItem> li = new List<SelectListItem>();
-            li.Add(new SelectListItem() { Text = "Active", Value = "1" });
-            li.Add(new SelectListItem() { Text = "In-active", Value = "0" });
-            ViewBag.abc = new SelectList(li, "Value", "Text");
-        }
-        // GET: users/Create
+        // GET: categories/Create
         public ActionResult Create()
         {
-            ViewBag.u_rid = new SelectList(db.roles, "r_id", "r_name");
-            CreateCombo();
             return View();
         }
 
-        // POST: users/Create
+        // POST: categories/Create
         // To protect from overposting attacks, enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "u_id,u_name,u_username,u_password,u_phone,u_email,u_status,u_rid")] user user)
+        public ActionResult Create([Bind(Include = "cat_id,cat_name,cat_status")] category category)
         {
             if (ModelState.IsValid)
             {
-                db.users.Add(user);
+                db.categories.Add(category);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
 
-            ViewBag.u_rid = new SelectList(db.roles, "r_id", "r_name", user.u_rid);
-            return View(user);
+            return View(category);
         }
 
-        // GET: users/Edit/5
+        // GET: categories/Edit/5
         public ActionResult Edit(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            user user = db.users.Find(id);
-            CreateCombo();
-            if (user == null)
+            category category = db.categories.Find(id);
+            if (category == null)
             {
                 return HttpNotFound();
             }
-            ViewBag.u_rid = new SelectList(db.roles, "r_id", "r_name", user.u_rid);
-            return View(user);
+            return View(category);
         }
 
-        // POST: users/Edit/5
+        // POST: categories/Edit/5
         // To protect from overposting attacks, enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "u_id,u_name,u_username,u_password,u_phone,u_email,u_status,u_rid")] user user)
+        public ActionResult Edit([Bind(Include = "cat_id,cat_name,cat_status")] category category)
         {
             if (ModelState.IsValid)
             {
-                db.Entry(user).State = EntityState.Modified;
+                db.Entry(category).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            ViewBag.u_rid = new SelectList(db.roles, "r_id", "r_name", user.u_rid);
-            return View(user);
+            return View(category);
         }
 
-        // GET: users/Delete/5
+        // GET: categories/Delete/5
         public ActionResult Delete(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            user user = db.users.Find(id);
-            if (user == null)
+            category category = db.categories.Find(id);
+            if (category == null)
             {
                 return HttpNotFound();
             }
-            return View(user);
+            return View(category);
         }
 
-        // POST: users/Delete/5
+        // POST: categories/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            user user = db.users.Find(id);
-            db.users.Remove(user);
+            category category = db.categories.Find(id);
+            db.categories.Remove(category);
             db.SaveChanges();
             return RedirectToAction("Index");
         }

@@ -11,7 +11,8 @@ namespace InventoryManagementSystem.Models
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.ComponentModel.DataAnnotations;
+
     public partial class role
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
@@ -21,7 +22,11 @@ namespace InventoryManagementSystem.Models
         }
     
         public byte r_id { get; set; }
+        
+        [Display(Name = "Role")]
         public string r_name { get; set; }
+
+        [Display(Name = "Status")]
         public byte r_status { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

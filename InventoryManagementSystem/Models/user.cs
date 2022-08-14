@@ -11,16 +11,32 @@ namespace InventoryManagementSystem.Models
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.ComponentModel.DataAnnotations;
+
     public partial class user
     {
         public int u_id { get; set; }
+
+        [Display(Name = "Name")]
         public string u_name { get; set; }
+
+        [Display(Name = "Username")]
         public string u_username { get; set; }
+
+        [Display(Name = "Password")]
+        [DataType(DataType.Password)]
         public string u_password { get; set; }
+
+        [Display(Name = "Phone Number")]
         public string u_phone { get; set; }
+
+        [Display(Name = "Email Address")]
         public string u_email { get; set; }
+
+        [Display(Name = "Status")]
         public byte u_status { get; set; }
+
+        [Display(Name = "Role")]
         public byte u_rid { get; set; }
     
         public virtual role role { get; set; }

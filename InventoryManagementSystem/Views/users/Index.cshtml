@@ -5,10 +5,10 @@
     Layout = "~/Views/Shared/_SideBarLayout.cshtml";
 }
 
-<h2>Index</h2>
+<h2>User Management</h2>
 
 <p>
-    @Html.ActionLink("Create New", "Create")
+    @Html.ActionLink("Add Record", "Create")
 </p>
 <table class="table">
     <tr>
@@ -17,9 +17,6 @@
         </th>
         <th>
             @Html.DisplayNameFor(model => model.u_username)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.u_password)
         </th>
         <th>
             @Html.DisplayNameFor(model => model.u_phone)
@@ -45,23 +42,26 @@
             @Html.DisplayFor(modelItem => item.u_username)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.u_password)
-        </td>
-        <td>
             @Html.DisplayFor(modelItem => item.u_phone)
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.u_email)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.u_status)
+            @if (item.u_status == 1)
+            {
+                @Html.Label("Active")
+            }
+            else
+            {
+                @Html.Label("In-active")
+            }
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.role.r_name)
         </td>
         <td>
             @Html.ActionLink("Edit", "Edit", new { id=item.u_id }) |
-            @Html.ActionLink("Details", "Details", new { id=item.u_id }) |
             @Html.ActionLink("Delete", "Delete", new { id=item.u_id })
         </td>
     </tr>

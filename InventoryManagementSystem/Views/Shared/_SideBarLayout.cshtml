@@ -18,14 +18,11 @@
         <div class="d-flex" id="wrapper">
             <!-- Sidebar-->
             <div class="border-end bg-white" id="sidebar-wrapper">
-                <div class="sidebar-heading border-bottom bg-light">Start Bootstrap</div>
+                <div class="sidebar-heading border-bottom bg-light">Inventory Portal</div>
                 <div class="list-group list-group-flush">
-                    <a class="list-group-item list-group-item-action list-group-item-light p-3" href="#!">Dashboard</a>
-                    <a class="list-group-item list-group-item-action list-group-item-light p-3" href="#!">Shortcuts</a>
-                    <a class="list-group-item list-group-item-action list-group-item-light p-3" href="#!">Overview</a>
-                    <a class="list-group-item list-group-item-action list-group-item-light p-3" href="#!">Events</a>
-                    <a class="list-group-item list-group-item-action list-group-item-light p-3" href="#!">Profile</a>
-                    <a class="list-group-item list-group-item-action list-group-item-light p-3" href="#!">Status</a>
+                    <a class="list-group-item list-group-item-action list-group-item-light p-3" href="@Url.Action("Index", "users")">Users</a>
+                    <a class="list-group-item list-group-item-action list-group-item-light p-3" href="@Url.Action("Index", "roles")">Roles</a>
+                    <a class="list-group-item list-group-item-action list-group-item-light p-3" href="#!">Categories</a>
                 </div>
             </div>
             <!-- Page content wrapper-->
@@ -48,7 +45,7 @@
                                         <a class="dropdown-item" href="#!">Something else here</a>
                                     </div>
                                 </li>
-                                <li>></li>
+                                <li class="nav-item"><a class="nav-link">Wlecome @Session["name"] @Html.ActionLink("Logout", "Logout", "Auth")</a></li>
                             </ul>
                         </div>
                     </div>

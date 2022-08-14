@@ -47,5 +47,11 @@ namespace InventoryManagementSystem.Controllers
                 return View();
             }
         }
+
+        public ActionResult Logout()
+        {
+            Session.Remove("name");
+            return View("Index");
+        }
     }
 }

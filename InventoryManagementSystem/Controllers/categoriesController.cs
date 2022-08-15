@@ -14,6 +14,14 @@ namespace InventoryManagementSystem.Controllers
     {
         private inventoryDBEntities2 db = new inventoryDBEntities2();
 
+        private void CreateCombo()
+        {
+            List<SelectListItem> li = new List<SelectListItem>();
+            li.Add(new SelectListItem() { Text = "Active", Value = "1" });
+            li.Add(new SelectListItem() { Text = "In-active", Value = "0" });
+            ViewBag.abc = new SelectList(li, "Value", "Text");
+        }
+
         // GET: categories
         public ActionResult Index()
         {
@@ -38,6 +46,7 @@ namespace InventoryManagementSystem.Controllers
         // GET: categories/Create
         public ActionResult Create()
         {
+            CreateCombo();
             return View();
         }
 

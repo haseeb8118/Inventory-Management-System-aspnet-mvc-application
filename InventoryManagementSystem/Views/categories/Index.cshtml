@@ -27,7 +27,14 @@
             @Html.DisplayFor(modelItem => item.cat_name)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.cat_status)
+            @if (item.cat_status == 1)
+            {
+                @Html.Label("Active")
+            }
+            else
+            {
+                @Html.Label("In-active")
+            }
         </td>
         <td>
             @Html.ActionLink("Edit", "Edit", new { id=item.cat_id }) |
